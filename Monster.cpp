@@ -1,10 +1,15 @@
+// John Cheshire / Group B
+// 03/31/2013
+//
 // This file implements the Monster class
 
 #include "Monster.h"
-#include<cstdlib>
+#include <cstdlib>
 
 using std::rand;
 
+// The constructor sets up the various attributes of the
+// monster with some randomization.
 Monster::Monster(int level)
 {
 	_attack = level*10 + (1 + rand() % 10);
@@ -19,6 +24,8 @@ Monster::Monster(int level)
 	type();
 }
 
+// This private member function randomly determines
+// the type of monster the player encounters.
 void Monster::type()
 {
 	switch(1 + rand() % 4)
