@@ -8,23 +8,15 @@
 
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
+#include "cinder/gl/Texture.h"
+
+#include "Resources.h"
+
 using namespace std;
 using namespace ci;
 
-#include "Monster.h"
+// #include "Monster.h"
 
-
-
-struct	Room{
-// room 
-
-	Room* doorF;
-	Room* doorB;
-	Room* doorL;
-	Room* doorR;
-	
-
-};
 
 
 
@@ -32,21 +24,30 @@ struct	Room{
 class Dungeon{
 	public:
 		enum moveDir{FOWARD,BACK,LEFT,RIGHT,BOSS};
-	
-		Dungeon(); // build the rooms
 		
-		void 	ChangeRoom();// change the currRoom, and currMonster
+		//Dungeon()// build the rooms
+		
+		void 	ChangeRoom(char	dir );// change the currRoom, and currMonster
 		void	killMonster();
 		
 		void 	draw(); // draw the room and monster if any
 		void 	update();
 		
+		bool	isFront(){return _doorF;}
+		bool	isLeft(){return _doorL;}
+		bool	isRight(){return _doorR;}
+
+		~Dungeon(); 
 	private:
-		
-		Monster* _currMonster;
-		Room* _currRoom;
-		
+
 	
+		bool		_doorF;
+		bool		_doorL;
+		bool		_doorR;
+
+		gl::Texture _DungeonBG;
+
+//		Monster* _currMonster;
 };
 
 

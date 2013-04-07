@@ -1,0 +1,14 @@
+#include "..\include\Resources.h"
+
+ID ICON "cinder_app_icon.ico"
+
+
+ROOM_FLR
+ROOM_FL_
+ROOM_F_R
+ROOM__LR 
+ROOM_F__
+ROOM__L_
+ROOM___R 
+
+//RES_MY_RES
