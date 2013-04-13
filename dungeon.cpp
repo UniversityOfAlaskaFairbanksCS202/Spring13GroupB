@@ -45,13 +45,14 @@ void	Dungeon::ChangeRoom(char	dir = 'n' )
 			return;
 			}
 	
-			
-		
-		// assign random doors
-		_doorF = Rand::randBool(); // random if door or not
-		_doorL = Rand::randBool(); // ""
-		_doorR = Rand::randBool(); // ""
-	
+		// make sure all doors are not closed 
+		do
+			{
+			// assign random doors
+			_doorF = Rand::randBool(); // random if door or not
+			_doorL = Rand::randBool(); // ""
+			_doorR = Rand::randBool(); // ""
+			}	while (!_doorF && !_doorL && !_doorR);
 
 	
 	// choose the proper room image
