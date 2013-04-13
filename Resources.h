@@ -12,6 +12,7 @@
 #define ROOM_F__  CINDER_RESOURCE( ../resources/, room_f__.png, 132, IMAGE )
 #define ROOM__L_  CINDER_RESOURCE( ../resources/, room__l_.png, 133, IMAGE )
 #define ROOM___R  CINDER_RESOURCE( ../resources/, room___r.png, 134, IMAGE )
+#define MONS___1  CINDER_RESOURCE( ../resources/, monster_1.png, 135, IMAGE )
 
 
 #endif
