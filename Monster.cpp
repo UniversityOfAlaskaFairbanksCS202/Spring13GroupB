@@ -16,9 +16,6 @@ Monster::Monster(int level)
     _hitPoints = level*10 + (1 + rand() % 10);
     _maxHitPoints = _hitPoints;
     _defense = level*10 + (1 + rand() % 10);
-    _dodge = level*10 + (1 + rand() % 10);
-    _mana = 0;
-    _maxMana = _mana;
     _weaponDamage = level*10 + (1 + rand() % 10);
     _level = level;
 	type();
