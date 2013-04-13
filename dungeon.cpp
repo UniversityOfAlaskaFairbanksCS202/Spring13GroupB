@@ -27,61 +27,81 @@ Dungeon::Dungeon()
 }
 */
 
+
+
+// void	Dungeon::ChangeRoom(char	dir = 'n' )
+// 		this funcion cahnges the room to a random type of room
+//
+// pramaters:
+//			dir -- the room direction that is requested 
 void	Dungeon::ChangeRoom(char	dir = 'n' )
 {
 
-
-	if ((('w' == dir) && !_doorF) || (('a' == dir) && !_doorL) || (('d' == dir) && !_doorR))
+	// test to see if the door is avaible 
+	if ((('w' == dir) && !_doorF) || (('a' == dir) && !_doorL) 
+								  || (('d' == dir) && !_doorR))
 			{
+			// if not return
 			return;
 			}
 	
 			
 		
-	
+		// assign random doors
 		_doorF = Rand::randBool(); // random if door or not
 		_doorL = Rand::randBool(); // ""
 		_doorR = Rand::randBool(); // ""
 	
 
 	
-
-	if (_doorF && _doorL && _doorR)
+	// choose the proper room image
+	if (_doorF && _doorL && _doorR) // all doors
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM_FLR ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM_FLR ) ) );
 		}
-	else if (_doorF && _doorL) 
+	else if (_doorF && _doorL) // front and left door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM_FL_ ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM_FL_ ) ) );
 		}
-	else if (_doorF && _doorR) 
+	else if (_doorF && _doorR) // front and right door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM_F_R ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM_F_R ) ) );
 		}
-	else if (_doorL && _doorR) 
+	else if (_doorL && _doorR) // left and right door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM__LR ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM__LR ) ) );
 		}
-	else if (_doorF) 
+	else if (_doorF) // front door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM_F__ ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM_F__ ) ) );
 		}
-	else if (_doorL) 
+	else if (_doorL) // left door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM__L_ ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM__L_ ) ) );
 		}
-	else if (_doorR) 
+	else if (_doorR) // right door
 		{
-			_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM___R ) ) );
+			_DungeonBG = gl::Texture( loadImage( 
+							loadResource(  ROOM___R ) ) );
 		}
 
 	
-}
+}// end change room
 
+
+
+// void	Dungeon::draw() 
+// 		the draw functon for the dungeon 
 void	Dungeon::draw() 
 {
 	gl::draw(_DungeonBG, getWindowBounds() );
-}
+} // end Dungeon::draw()
 
 
 

@@ -3,7 +3,9 @@
 
 void  UI::keyDown( char key, Dungeon & myDungeon )
 {
-	myDungeon.ChangeRoom(key);
-	
+	//if ((key == 'w')||(key == 'a')||(key == 'd'))
+	{
+		myDungeon.ChangeRoom(key);
+	}
 	
 }

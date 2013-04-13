@@ -10,12 +10,12 @@
 
 Player::Player()
 {
-    _attack = 10 + (1 +rand % 10);
-    _hitPoints = 10 + (1 +rand % 10);
+    _attack = 10 + (1 +rand() % 10);
+    _hitPoints = 10 + (1 +rand() % 10);
     _maxHitPoints = _hitPoints;
-    _defense = 10 + (1 +rand % 10);
-    _dodge = 10 + (1 +rand % 10);
-    _mana = 10 + (1 +rand % 10);
+    _defense = 10 + (1 +rand() % 10);
+    _dodge = 10 + (1 +rand() % 10);
+    _mana = 10 + (1 +rand() % 10);
     _maxMana = _mana;
     _weaponDamage = 0;
     _magicDamage = 5;
