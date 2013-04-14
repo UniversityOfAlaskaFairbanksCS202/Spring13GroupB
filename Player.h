@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Character.h"
 #include "Monster.h"
+using namespace std;
 
 class Player: public Character
 {
