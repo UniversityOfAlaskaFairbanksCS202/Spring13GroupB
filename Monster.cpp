@@ -39,19 +39,19 @@ void Monster::type()
 			_name = "Dungeon Rat";
 			_attackMethod = "The dungeon rat bites at your legs.";
 			_description = "You hear a scurry and look down to see a large rat.";
-			_monsterImg = gl::Texture(loadImage(loadResource(MONS___1)));
+			_monsterImg = gl::Texture(loadImage(loadResource(MONS___2)));
 			break;
 		case 3:
 			_name = "Man-eating Spider";
 			_attackMethod = "The man-eating spider jumps toward you ready to bite.";
 			_description = "A spider as big as a dog slides down from the ceiling.";
-			_monsterImg = gl::Texture(loadImage(loadResource(MONS___1)));
+			_monsterImg = gl::Texture(loadImage(loadResource(MONS___3)));
 			break;
 		case 4:
 			_name = "Devil Cat";
 			_attackMethod = "The devil cat hisses and swipes at you.";
 			_description = "A devil cat jumps down from a ledge and postures before you.";
-			_monsterImg = gl::Texture(loadImage(loadResource(MONS___1)));
+			_monsterImg = gl::Texture(loadImage(loadResource(MONS___4)));
 			break;
 	}
 }
