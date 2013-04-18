@@ -1,3 +1,4 @@
+#include "Messenger.h"
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "dungeon.h"
@@ -17,6 +18,7 @@ class cs_202ProjectApp : public AppBasic {
 	private:
 		Dungeon _theDungeon;
 		UI		_theUI;
+		Messenger _msgEngine;
 };
 
 void cs_202ProjectApp::setup()
@@ -39,6 +41,7 @@ void cs_202ProjectApp::draw()
 	// clear out the window with black
 	//gl::clear( Color( 0, 0, 0 ) );
 	_theDungeon.draw();
+	_msgEngine.draw();
 }
 
 CINDER_APP_BASIC( cs_202ProjectApp, RendererGl )
