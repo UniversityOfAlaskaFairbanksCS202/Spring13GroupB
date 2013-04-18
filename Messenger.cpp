@@ -13,10 +13,10 @@ Messenger::Messenger()
 	ULONG_PTR _GdiplusToken;
 	Gdiplus::GdiplusStartup( &_GdiplusToken, &_gdiplusStartupInput, NULL );
 
-	_row1 = "";
-	_row2 = "";
-	_row3 = "";
-	_row4 = "";
+	_row1 = " ";
+	_row2 = " ";
+	_row3 = " ";
+	_row4 = " ";
 }
 
 // This function draws the messages to screen.
@@ -29,7 +29,7 @@ void Messenger::draw()
 	gl::Texture msgTexture;
 
 	msgBox.clear(ColorA(0.0f,0.0f,0.0f,0.0f));
-	msgBox.setColor(Color(1,1,.2)); // Yellow text
+	msgBox.setColor(Color(1.0f,1.0f,0.2f)); // Yellow text
 	msgBox.setFont(Font("Courier New",16.0f));
 	msgBox.addLine(_row1);
 	msgBox.addLine(_row2);
