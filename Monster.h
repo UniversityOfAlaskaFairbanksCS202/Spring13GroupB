@@ -11,13 +11,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/ImageIo.h"
-#include "cinder/app/AppBasic.h"
 #include "Resources.h"
-#include <string>
-
-using std::string;
-using namespace ci;
-using namespace ci::app;
 
 class Monster : public Character
 {
