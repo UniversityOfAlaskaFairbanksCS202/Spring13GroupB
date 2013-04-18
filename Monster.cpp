@@ -12,7 +12,7 @@ Monster::Monster(int level)
 	// These constants specify how many random points can be added to
 	// attributes when initializing a character
 	const int MIN_VARIATION = 0;
-	const int MAX_VARIATION = 10;
+	const int MAX_VARIATION = 11; // One above max
 
 	_attack = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _hitPoints = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
@@ -27,7 +27,8 @@ Monster::Monster(int level)
 // the type of monster the player encounters.
 void Monster::type()
 {
-	switch(Rand::randInt(1,4))
+	int randType = Rand::randInt(1,5);
+	switch(randType)
 	{
 		case 1:
 			_name = "West End Ogre";
