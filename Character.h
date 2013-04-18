@@ -10,7 +10,6 @@
 #define __Character__Character__
 
 #include <iostream>
-#include "cinder/Rand.h"
 
 class Character
 {

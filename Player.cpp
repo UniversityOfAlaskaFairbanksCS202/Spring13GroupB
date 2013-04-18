@@ -10,12 +10,11 @@
 
 Player::Player()
 {
-    _attack = 10 + (1 +rand() % 10);
-    _hitPoints = 10 + (1 +rand() % 10);
+    _attack = 10 + (Rand::randInt (1, 10));
+    _hitPoints = 10 + (Rand::randInt (1, 10));
     _maxHitPoints = _hitPoints;
-    _defense = 10 + (1 +rand() % 10);
-    _dodge = 10 + (1 +rand() % 10);
-    _mana = 10 + (1 +rand() % 10);
+    _defense = 10 + (Rand::randInt (1, 10));
+    _mana = 10 + (Rand::randInt (1, 10));
     _maxMana = _mana;
     _weaponDamage = 0;
     _magicDamage = 5;
@@ -27,7 +26,7 @@ Player::Player()
     _numManaPotions = 0;
 }
 
-fightVictor Player::turn(Monster monster, attackOption choice)
+/*fightVictor Player::turn(Monster monster, attackOption choice)
 {
     bool isAlive;
     
@@ -68,16 +67,15 @@ fightVictor Player::turn(Monster monster, attackOption choice)
         return NEITHER;
     }
 
-}
+}*/
 
 bool Player::randomEncounter()//function for randomly generating an enemy encounter
 {
-    double chanceOfEncouter = 65.0;
+    int chanceOfEncouter = 65;
     
     bool enemyEncountered = false;
-    double randomChanceOfEncounter = 0.0;
-    srand(time(0));
-    randomChanceOfEncounter = 1 + rand () % 100;
+    int randomChanceOfEncounter = 0;
+    randomChanceOfEncounter = (Rand::randInt (1, 100));
     //cout << randomChanceOfEncounter << endl;
     if(randomChanceOfEncounter > chanceOfEncouter)
         enemyEncountered = true;
@@ -86,51 +84,51 @@ bool Player::randomEncounter()//function for randomly generating an enemy encoun
 
 void Player::levelingSystem()//the leveling system for the character
 {
-    if(this._experience == 100)
+    if(_experience == 100)
     {
-        this._level ++;
-        this._hitPoints += 10;
-        this._attack += 3;
-        this._dodge += 3;
-        cout << "You are now level " << this._level << "." << endl;
-        cout << "Your hit points are now " << this._hitPoints << ", your attack is now " << this._attack << ", your dodge is now " << this._dodge << "." << endl;
+        _level ++;
+        _hitPoints += 10;
+        _attack += 3;
+        _defense += 3;
+        cout << "You are now level " << _level << "." << endl;
+        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
         
     }
     
-    if(this._experience == 275)
+    if(_experience == 275)
     {
-        this._level ++;
-        this._hitPoints += 10;
-        this._attack += 3;
-        this._dodge += 3;
-        cout << "You are now level " << this._level << "." << endl;
-        cout << "Your hit points are now " << this._hitPoints << ", your attack is now " << this._attack << ", your dodge is now " << this._dodge << "." << endl;
+        _level ++;
+        _hitPoints += 10;
+        _attack += 3;
+        _defense += 3;
+        cout << "You are now level " << _level << "." << endl;
+        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
         
     }
-    if(this._experience == 475)
+    if(_experience == 475)
     {
-        this._level ++;
-        this._hitPoints += 10;
-        this._attack += 3;
-        this._dodge += 3;
-        cout << "You are now level " << this._level << "." << endl;
-        cout << "Your hit points are now " << this._hitPoints << ", your attack is now " << this._attack << ", your dodge is now " << this._dodge << "." << endl;
+        _level ++;
+        _hitPoints += 10;
+        _attack += 3;
+        _defense += 3;
+        cout << "You are now level " << _level << "." << endl;
+        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
     }
-    if(this._experience == 600)
+    if(_experience == 600)
     {
-        this._level ++;
-        this._hitPoints += 10;
-        this._attack += 3;
-        this._dodge += 3;
-        cout << "You are now level " << this._level << "." << endl;
-        cout << "Your hit points are now " << this._hitPoints << ", your attack is now " << this._attack << ", your dodge is now " << this._dodge << "." << endl;
+        _level ++;
+        _hitPoints += 10;
+        _attack += 3;
+        _defense += 3;
+        cout << "You are now level " << _level << "." << endl;
+        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
         
     }
 }
 
-void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
+/*void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
 {
-    this._experience += monster._experience;
+    _experience += monster._experience;
     cout << "You got " << monster._experience << " experience points." << endl;
     levelingSystem();
     
@@ -145,38 +143,43 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
     int coinDropPercentage = 30;
     int randomCoinDropPercentage = 0;
     
-    srand(time(0));
-    randomEnemyDropPercentage = 1 + rand() % 100;
+    randomEnemyDropPercentage = Rand::randInt (1, 100);
     //cout << "Random enemy drop percentage is " << randomEnemyDropPercentage << endl;
     if(randomEnemyDropPercentage > baseEnemyDropPercentage)
     {
-        srand(time(0));
-        randomPotionDropPercentage = 1 + rand() % 100;
+        randomPotionDropPercentage = Rand::randInt (1, 100);
         if(randomPotionDropPercentage > potionDropPercentage)
         {
-            cout << "You got a potion!" << endl;
-            this.addPotion(numPotions);
-            
+            int kindOfPotion;
+            kindOfPotion = Rand::randInt(1,2);
+            if(kindOfPotion == 1)
+            {
+                cout << "You got an HP potion!" << endl;
+                addHPPotion(numPotions);
+            }
+            else
+            {
+                cout << "You got an mana potion!" << endl;
+                addManaPotion(numPotions);
+            }
+ 
         }
-        srand(time(0));
-        randomCoinDropPercentage = 1 + rand() % 100;
+        randomCoinDropPercentage = Rand::randInt (1, 10);
         if(randomCoinDropPercentage > coinDropPercentage)
         {
-            srand(time(0));
-            numCoins = 1 + rand() % 10;
+            numCoins = Rand::randInt (1, 10);
             cout << "You got " << numCoins << " coins." << endl;
-            this.addCoins(numCoins);
+            addCoins(numCoins);
         }
     }
     
-}
+}*/
 
 void Player::treasureChest()//randomly generates chests for the player to find
 {
     //cout << "Called the treasure chest function" << endl;
     int baseChanceOfChest = 50;
-    srand(time(0));
-    int randomChanceOfChest = 1 + rand() % 100;
+    int randomChanceOfChest = Rand::randInt (1, 100);
     
     int numPotions = 0;
     int potionDropPercentage = 70;
@@ -193,24 +196,20 @@ void Player::treasureChest()//randomly generates chests for the player to find
         cin >> chestInput;
         if(toupper(chestInput) == 'Y')
         {
-            srand(time(0));
-            randomPotionDropPercentage = 1 + rand() % 100;
+            randomPotionDropPercentage = Rand::randInt (1, 100);
             if(randomPotionDropPercentage > potionDropPercentage)
             {
                 cout << "You got a potion!" << endl;
                 numPotions ++;
-                player.addPotion(numPotions);
-                playerMenu();
+                addHPPotion(numPotions);
                 
             }
-            srand(time(0));
-            randomCoinDropPercentage = 1 + rand() % 100;
+            randomCoinDropPercentage = Rand::randInt (1, 100);
             if(randomCoinDropPercentage > coinDropPercentage)
             {
-                srand(time(0));
-                numCoins = 1 + rand() % 10;
+                numCoins = Rand::randInt (1, 10);
                 cout << "You got " << numCoins << " coins." << endl;
-                this.addCoins(numCoins);
+                addCoins(numCoins);
             }
             else
             {
@@ -228,8 +227,7 @@ void Player::treasureChest()//randomly generates chests for the player to find
 void Player::movementDescription()//called when the player moves, gives some description of the surroundings to spice things up
 {
     int randomDescription;
-    srand(time(0));
-    randomDescription = 1 + rand() % 10;
+    randomDescription = Rand::randInt (1, 10);
     switch(randomDescription)
     {
         case 1:
@@ -324,15 +322,26 @@ void Player::setExperience(int exp)
     _experience = exp;
 }
 
-int Player::getPotions()
+int Player::getHPPotions()
 {
-    return _potions;
+    return _hpPotion;
 }
 
-void Player::setPotions(int potions)
+void Player::setHPPotions(int potions)
 {
-    _potions = potions;
+    _hpPotion = potions;
 }
+
+int Player::getManaPotions()
+{
+    return _manaPotion;
+}
+
+void Player::setManaPotions(int potions)
+{
+    _manaPotion = potions;
+}
+
 int Player::getCoins()
 {
     return _coins;

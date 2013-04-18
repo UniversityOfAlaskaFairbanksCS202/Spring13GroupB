@@ -11,22 +11,21 @@
 
 #include <iostream>
 #include "Character.h"
-#include "Monster.h"
+//#include "Monster.h"
 using namespace std;
-
 class Player: public Character
 {
 private:
-    int _mana, _maxMana, experience, _numHPPotions, _numManaPotions, _coins, _magicDamage, _hpPotion, _manaPotion;
+    int _mana, _maxMana, _experience, _numHPPotions, _numManaPotions, _coins, _magicDamage, _hpPotion, _manaPotion;
     
 public:
-    enum fightVictor = {NEITHER, PLAYER, MONSTER};
-    enum attackOption = {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
+    enum fightVictor {NEITHER, PLAYER, MONSTER};
+    enum attackOption {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
     Player();
-    fightVictor turn(Monster monster, attackOption choice);
+    //fightVictor turn(Monster monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
-    void enemyDrop (Monster monster);
+    //void enemyDrop (Monster monster);
     void treasureChest();
     void movementDescription();
     void magicAttack();
@@ -37,6 +36,7 @@ public:
     void drinkHPPotion();
     void drinkManaPotion();
     void decrementMana();
+    void addCoins (int numCoins);
     
     int getMana();
     void setMana(int mana);
@@ -44,8 +44,10 @@ public:
     void setMaxMana(int maxMana);
     int getExperience();
     void setExperience(int exp);
-    int getPotions();
-    void setPotions(int potions);
+    int getHPPotions();
+    void setHPPotions(int potions);
+    int getManaPotions();
+    void setManaPotions(int potions);
     int getCoins();
     void setCoins(int coins);
     
