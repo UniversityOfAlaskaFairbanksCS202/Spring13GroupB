@@ -10,12 +10,20 @@
 #define __Character__Character__
 
 #include <iostream>
+#include "cinder\Rand.h"
+#include "cinder\app\AppBasic.h"
+#include <string>
+#include "Messenger.h"
+
+using namespace ci;
+using namespace ci::app;
+using std::string;
 
 class Character
 {
 protected:
     int _hitPoints, _maxHitPoints, _level, _attack, _defense, _weaponDamage, _weaponLevel;
-    
+
 public:
     bool hit (int hitPoints);//setter function for changing hit points in fight function
     int defense();//getter method for getting defense used in fight function
@@ -32,8 +40,6 @@ public:
     void setWeaponDamage(int damage);
     int getWeaponLevel();
     void setWeaponLevel(int weaponLevel);
-
-
 };
 
 #endif /* defined(__Character__Character__) */
