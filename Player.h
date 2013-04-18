@@ -11,17 +11,24 @@
 
 #include <iostream>
 #include "Character.h"
+
+using std::cout;
+using std::endl;
+using std::cin;
+
+
 //#include "Monster.h"
-using namespace std;
+
 class Player: public Character
 {
 private:
     int _mana, _maxMana, _experience, _numHPPotions, _numManaPotions, _coins, _magicDamage, _hpPotion, _manaPotion;
-    
+    Messenger _msg;
+
 public:
     enum fightVictor {NEITHER, PLAYER, MONSTER};
     enum attackOption {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
-    Player();
+    Player(Messenger);
     //fightVictor turn(Monster monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
