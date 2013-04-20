@@ -23,12 +23,12 @@ class Player: public Character
 {
 private:
     int _mana, _maxMana, _experience, _numHPPotions, _numManaPotions, _coins, _magicDamage, _hpPotion, _manaPotion;
-    Messenger _msg;
+    Messenger *_msg;
 
 public:
     enum fightVictor {NEITHER, PLAYER, MONSTER};
     enum attackOption {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
-    Player(Messenger);
+    Player(Messenger&);
     //fightVictor turn(Monster monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();

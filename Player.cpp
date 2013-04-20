@@ -8,9 +8,9 @@
 
 #include "Player.h"
 
-Player::Player(Messenger msg)
+Player::Player(Messenger &msg)
 {
-	_msg = msg;
+	_msg = &msg;
     _attack = 10 + (Rand::randInt (1, 10));
     _hitPoints = 10 + (Rand::randInt (1, 10));
     _maxHitPoints = _hitPoints;
