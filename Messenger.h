@@ -35,6 +35,12 @@ using std::string;
 class Messenger
 {
 private:
+	float _x;
+	float _y;
+	float _red;
+	float _green;
+	float _blue;
+	float _size;
 	string _row1;
 	string _row2;
 	string _row3;
