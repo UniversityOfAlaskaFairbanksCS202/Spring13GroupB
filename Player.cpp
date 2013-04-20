@@ -27,15 +27,15 @@ Player::Player(Messenger &msg)
     _numManaPotions = 0;
 }
 
-/*fightVictor Player::turn(Monster monster, attackOption choice)
+Player::fightVictor Player::turn(Monster monster, attackOption choice)
 {
     bool isAlive;
     
     switch(choice)
     {
         //normal attack
-        case 1:
-            isAlive = monster.hit(attack(monster._defense));
+        case 0:
+            isAlive = monster.hit(attack(monster.getDefense()));
             
             if(isAlive)
             {
@@ -44,20 +44,20 @@ Player::Player(Messenger &msg)
             break;
         
         //magic attack
-        case 2:
+        case 1:
             isAlive = monster.hit(_magicDamage);
             decrementMana();
             break;
         //drink HP potion
-        case 3:
+        case 2:
             drinkHPPotion();
         //drink mana potion
-        case 4:
+        case 3:
             drinkManaPotion();
             break;
     }
     
-    isAlive = hit(monster._attack(_defense));
+    isAlive = hit(monster.attack(_defense));
     
     if(isAlive)
     {
@@ -68,7 +68,7 @@ Player::Player(Messenger &msg)
         return NEITHER;
     }
 
-}*/
+}
 
 bool Player::randomEncounter()//function for randomly generating an enemy encounter
 {
@@ -127,10 +127,10 @@ void Player::levelingSystem()//the leveling system for the character
     }
 }
 
-/*void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
+void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
 {
-    _experience += monster._experience;
-    cout << "You got " << monster._experience << " experience points." << endl;
+    _experience += 10;//change later
+    cout << "You got 10 experience points." << endl;
     levelingSystem();
     
     int baseEnemyDropPercentage = 35;
@@ -174,7 +174,7 @@ void Player::levelingSystem()//the leveling system for the character
         }
     }
     
-}*/
+}
 
 void Player::treasureChest()//randomly generates chests for the player to find
 {

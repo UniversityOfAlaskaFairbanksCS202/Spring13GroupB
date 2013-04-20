@@ -17,7 +17,7 @@ using std::endl;
 using std::cin;
 
 
-//#include "Monster.h"
+#include "Monster.h"
 
 class Player: public Character
 {
@@ -29,10 +29,10 @@ public:
     enum fightVictor {NEITHER, PLAYER, MONSTER};
     enum attackOption {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
     Player(Messenger&);
-    //fightVictor turn(Monster monster, attackOption choice);
+    fightVictor turn(Monster monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
-    //void enemyDrop (Monster monster);
+    void enemyDrop (Monster monster);
     void treasureChest();
     void movementDescription();
     void magicAttack();

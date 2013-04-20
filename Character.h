@@ -10,8 +10,8 @@
 #define __Character__Character__
 
 #include <iostream>
-#include "cinder\Rand.h"
-#include "cinder\app\AppBasic.h"
+#include "cinder/Rand.h"
+#include "cinder/app/AppBasic.h"
 #include <string>
 #include "Messenger.h"
 
