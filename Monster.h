@@ -24,10 +24,10 @@ private:
 public:
 	Monster();
 	Monster(int);
-	string getName();
-	string getAttackMethod();
-	string getDesc();
-	gl::Texture getImage();
+	string getName() const;
+	string getAttackMethod() const;
+	string getDesc() const;
+	gl::Texture getImage() const;
 };
 
 #endif

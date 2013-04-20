@@ -57,22 +57,22 @@ void Monster::type()
 	}
 }
 
-string Monster::getName()
+string Monster::getName() const
 {
 	return _name;
 }
 
-string Monster::getAttackMethod()
+string Monster::getAttackMethod() const
 {
 	return _attackMethod;
 }
 
-string Monster::getDesc()
+string Monster::getDesc() const
 {
 	return _description;
 }
 
-gl::Texture Monster::getImage()
+gl::Texture Monster::getImage() const
 {
 	return _monsterImg;
 }
