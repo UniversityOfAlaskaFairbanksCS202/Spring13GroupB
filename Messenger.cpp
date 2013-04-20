@@ -5,29 +5,8 @@
 
 #include "Messenger.h"
 
-Messenger::Messenger()
-{
-	// These lines start GDI+, which must be done
-	// before a TextLayout object can be created.
-	Gdiplus::GdiplusStartupInput _gdiplusStartupInput;
-	ULONG_PTR _GdiplusToken;
-	Gdiplus::GdiplusStartup( &_GdiplusToken, &_gdiplusStartupInput, NULL );
-
-	_row1 = " ";
-	_row2 = " ";
-	_row3 = " ";
-	_row4 = " ";
-	_x = 0.0f;
-	_y = 0.0f;
-	// Default colors provide yellow text
-	_red = 1.0f;
-	_green = 1.0f;
-	_blue = 0.2f;
-	_size = 16.0f/480;
-}
-
 // This function draws the messages to screen.
-void Messenger::draw()
+void Messenger::draw() const
 {
 	// msgBox and msgTexture are created here
 	// because they must be created after GDI+
@@ -38,25 +17,42 @@ void Messenger::draw()
 	msgBox.clear(ColorA(0.0f,0.0f,0.0f,0.0f));
 	msgBox.setColor(Color(_red,_green,_blue)); 
 	msgBox.setFont(Font("Courier New",getWindowHeight()*_size));
-	msgBox.addLine(_row1);
-	msgBox.addLine(_row2);
-	msgBox.addLine(_row3);
-	msgBox.addLine(_row4);
 
-	msgTexture = msgBox.render(true,false);
+	if ((getElapsedSeconds() - _time1) < MESSAGE_FADE_TIME)
+	{
+		msgBox.addLine(_row1);
+		if ((getElapsedSeconds() - _time2) < MESSAGE_FADE_TIME)	
+		{
+			msgBox.addLine(_row2);
+			if ((getElapsedSeconds() - _time3) < MESSAGE_FADE_TIME)	
+			{
+				msgBox.addLine(_row3);
+				if ((getElapsedSeconds() - _time4) < MESSAGE_FADE_TIME)	
+					msgBox.addLine(_row4);
+			}
+		}
 
-	// Have to turn alpha blending on and off to get it
-	// to work right. It might be better to do this in the main
-	// application setup function.
-	gl::enableAlphaBlending();
-	gl::draw(msgTexture,Vec2f(getWindowWidth()*_x, getWindowHeight()*_y));
-	gl::disableAlphaBlending();
+		msgTexture = msgBox.render(true,false);
+
+		// Have to turn alpha blending on and off to get it
+		// to work right. It might be better to do this in the main
+		// application setup function.
+		gl::enableAlphaBlending();
+		gl::draw(msgTexture,Vec2f(getWindowWidth()*_x, getWindowHeight()*_y));
+		gl::disableAlphaBlending();
+
+	}
+
 }
 
 void Messenger::newMessage(string newMsg)
 {
 	_row4 = _row3;
+	_time4 = _time3;
 	_row3 = _row2;
+	_time3 = _time2;
 	_row2 = _row1;
+	_time2 = _time1;
 	_row1 = newMsg;
+	_time1 = static_cast<int>(getElapsedSeconds());
 }
