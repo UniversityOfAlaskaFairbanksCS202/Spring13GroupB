@@ -30,7 +30,7 @@ class Dungeon{
 	public:
 		enum moveDir{FOWARD,BACK,LEFT,RIGHT,BOSS};
 		
-		//Dungeon()// build the rooms
+		//Dungeon();// construct stuff
 		
 		void 	ChangeRoom(char	dir );// change the currRoom
 									  // and currMonster
@@ -51,8 +51,8 @@ class Dungeon{
 		bool		_doorR;
 
 		gl::Texture _DungeonBG;
-
-		Monster* _currMonster;
+		gl::Texture _DungeonMonster;
+		Monster * _currMonster;
 };
 
 

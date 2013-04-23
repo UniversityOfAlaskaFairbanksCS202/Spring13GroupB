@@ -16,14 +16,8 @@ using namespace std;
 /*
 Dungeon::Dungeon()
 {
-	_doorF = Rand::randBool(); // random if door or not
-	_doorL = Rand::randBool();// ""
-	_doorR = Rand::randBool();// ""
-
-	_DungeonBG = gl::Texture( loadImage( loadResource(  ROOM_FLR ) ) );
-	
-
-	//_currMonster = new Monster;
+	_DungeonMonster = gl::Texture( loadImage( 
+							loadResource(  MONS___1 ) ) );
 }
 */
 
@@ -34,7 +28,7 @@ Dungeon::Dungeon()
 //
 // pramaters:
 //			dir -- the room direction that is requested 
-void	Dungeon::ChangeRoom(char	dir = 'n' )
+void	Dungeon::ChangeRoom(char	dir = 'n' )// need to add palyer level
 {
 
 	// test to see if the door is avaible 
@@ -53,8 +47,13 @@ void	Dungeon::ChangeRoom(char	dir = 'n' )
 			_doorL = Rand::randBool(); // ""
 			_doorR = Rand::randBool(); // ""
 			}	while (!_doorF && !_doorL && !_doorR);
+			
+	if (!_currMonster)
+			delete _currMonster;
 
-	
+	_currMonster = new Monster(1); 
+	_DungeonMonster = _currMonster->getImage();
+	 
 	// choose the proper room image
 	if (_doorF && _doorL && _doorR) // all doors
 		{
@@ -102,13 +101,21 @@ void	Dungeon::ChangeRoom(char	dir = 'n' )
 void	Dungeon::draw() 
 {
 	gl::draw(_DungeonBG, getWindowBounds() );
+	
+	if ((_currMonster->getHitPoints()) > 0)
+	{
+	gl::enableAlphaBlending();
+	gl::draw(_DungeonMonster, getWindowBounds() );
+	gl::disableAlphaBlending();
+	}
 } // end Dungeon::draw()
 
 
 
 Dungeon::~Dungeon()
 {
-	
+	if (!_currMonster)
+			delete _currMonster;
 
 }
 
