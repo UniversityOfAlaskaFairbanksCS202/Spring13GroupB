@@ -28,7 +28,9 @@ private:
 public:
     enum fightVictor {NEITHER, PLAYER, MONSTER};
     enum attackOption {ATTACK, MAGICATTACK, DRINKHP, DRINKMANA};
-    Player(Messenger&);
+    Player()
+	{}
+	Player(Messenger&);
     fightVictor turn(Monster monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
