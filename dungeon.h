@@ -32,7 +32,7 @@ class Dungeon{
 		
 		//Dungeon();// construct stuff
 		
-		void 	ChangeRoom(char	dir ,int lvl);// change the currRoom
+		void 	ChangeRoom(char	dir );// change the currRoom
 									  // and currMonster
 		void	killMonster()
 				{_monsterAlive = false;}
@@ -40,11 +40,6 @@ class Dungeon{
 		bool	occupied()
 				{return _monsterAlive;}
 		
-		Monster& getMonster()
-				{
-				return *_currMonster;		
-				}
-
 		// void	Dungeon::draw() 
 		// 		the draw functon for the dungeon 
 		void 	draw(); 
