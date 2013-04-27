@@ -23,7 +23,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 				{
 				myPlayer.movementDescription();
 				}
-			//myMsg.newMessage("moving"); 
+		
 		}
 	}
 	else
@@ -31,7 +31,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		Player::fightVictor victor;
 		if (key == ' ')
 		{
-			myMsg.newMessage("You Attack"); 
+			
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::ATTACK);
 				if (victor == Player::PLAYER)
 					{
@@ -45,7 +45,6 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		}
 		if (key == 'm')
 		{
-			myMsg.newMessage("You Magic"); 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::MAGICATTACK);
 				if (victor == Player::PLAYER)
 					{
@@ -59,7 +58,6 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		}
 		if (key == 'h')
 		{
-			myMsg.newMessage("You health potion"); 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKHP);
 				if (victor == Player::PLAYER)
 					{
@@ -73,7 +71,6 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		}
 		if (key == 'g')
 		{
-			myMsg.newMessage("You magic potion"); 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKMANA);
 				if (victor == Player::PLAYER)
 					{
