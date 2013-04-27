@@ -17,16 +17,16 @@
 
 // The following five lines are required to start GDI+
 // which is needed to create a TextLayout.
-#include <windows.h>
-#include <objidl.h>
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) < (b)) ? (a) : (b))
-#include <GdiPlus.h>
+//#include <windows.h>
+//#include <objidl.h>
+//#define max(a, b) (((a) > (b)) ? (a) : (b))
+//#define min(a, b) (((a) < (b)) ? (a) : (b))
+//#include <GdiPlus.h>
 
 #include <string>
-#include "cinder\Text.h"
-#include "cinder\gl\Texture.h"
-#include "cinder\app\AppBasic.h"
+#include "cinder/Text.h"
+#include "cinder/gl/Texture.h"
+#include "cinder/app/AppBasic.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -57,9 +57,9 @@ public:
 	{
 		// These lines start GDI+, which must be done
 		// before a TextLayout object can be created.
-		Gdiplus::GdiplusStartupInput _gdiplusStartupInput;
-		ULONG_PTR _GdiplusToken;
-		Gdiplus::GdiplusStartup( &_GdiplusToken, &_gdiplusStartupInput, NULL );
+//		Gdiplus::GdiplusStartupInput _gdiplusStartupInput;
+//		ULONG_PTR _GdiplusToken;
+//		Gdiplus::GdiplusStartup( &_GdiplusToken, &_gdiplusStartupInput, NULL );
 	
 		_row1 = "Test1";
 		_row2 = "Test 2";
