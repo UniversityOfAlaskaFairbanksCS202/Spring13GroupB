@@ -29,37 +29,42 @@ Player::Player(Messenger &msg)
 
 Player::fightVictor Player::turn(Monster monster, attackOption choice)
 {
-    bool isAlive;
+    bool isDead;
     
     switch(choice)
     {
         //normal attack
         case 0:
-            isAlive = monster.hit(attack(monster.getDefense()));
-            
-            if(isAlive)
-            {
-                return PLAYER;
-            }
+            isDead = monster.hit(attack(monster.getDefense()));
+			_msg->newMessage("You attack the monster.");
             break;
-        
         //magic attack
         case 1:
-            isAlive = monster.hit(_magicDamage);
+            isDead = monster.hit(_magicDamage);
+			_msg->newMessage("You attack with magic.");
             decrementMana();
             break;
         //drink HP potion
         case 2:
             drinkHPPotion();
+			_msg->newMessage("Drinking a health potion makes you feel stronger.");
+			break;
         //drink mana potion
         case 3:
             drinkManaPotion();
+			_msg->newMessage("Drinking a magic potion revives your energy.");
             break;
     }
+
+	if(isDead)
+    {
+		_msg->newMessage("You have killed the monster.");
+        return PLAYER;
+    }
     
-    isAlive = hit(monster.attack(_defense));
+    isDead = hit(monster.attack(_defense));
     
-    if(isAlive)
+    if(isDead)
     {
         return MONSTER;
     }

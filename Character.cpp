@@ -12,7 +12,7 @@ bool Character::hit (int hitPoints)
 {
     bool isDead = false;
     _hitPoints -= hitPoints;
-    if(_hitPoints == 0)
+    if(_hitPoints <= 0)
     {
         isDead = true;
         return isDead;
