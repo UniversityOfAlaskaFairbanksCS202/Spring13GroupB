@@ -34,7 +34,7 @@ void cs_202ProjectApp::setup()
 
 void cs_202ProjectApp::keyDown( KeyEvent event )
 {
-	_theDungeon.ChangeRoom(event.getChar()); 
+	
 	_theUI.keyDown(event.getChar() , _theDungeon);
 }
 
