@@ -35,6 +35,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::ATTACK);
 				if (victor == Player::PLAYER)
 					{
+					myPlayer.enemyDrop(myDungeon.getMonster());
 					myDungeon.killMonster();
 					}
 				if (victor == Player::MONSTER)
@@ -48,6 +49,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::MAGICATTACK);
 				if (victor == Player::PLAYER)
 					{
+					myPlayer.enemyDrop(myDungeon.getMonster());
 					myDungeon.killMonster();
 					}
 				if (victor == Player::MONSTER)
