@@ -8,14 +8,14 @@ UIMessenger::UIMessenger(Player &player)
 
 	_x = 0.0f/640;
 	_y = 400.0f/480;
-	_x2 = 160.0f/640;
+	_x2 = 300.0f/640;
 	_y2 = 400.0f/480;
 	// Default colors provide yellow text
 	_red = 1.0f;
 	_green = 1.0f;
-	_blue = 0.2f;
+	_blue = 0.0f;
 	// _size is used to scale size of font depending on window size
-	_size = 16.0f/480;
+	_size = 32.0f/480;
 	UIMessenger::update();
 }
 
