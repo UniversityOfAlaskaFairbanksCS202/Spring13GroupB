@@ -28,7 +28,7 @@ Dungeon::Dungeon()
 //
 // pramaters:
 //			dir -- the room direction that is requested 
-void	Dungeon::ChangeRoom(char	dir = 'n' )// need to add palyer level
+void	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 {
 
 	// test to see if the door is avaible 
@@ -51,7 +51,7 @@ void	Dungeon::ChangeRoom(char	dir = 'n' )// need to add palyer level
 	if (!_currMonster)
 			delete _currMonster;
 
-	_currMonster = new Monster(1); 
+	_currMonster = new Monster(lvl); 
 	_DungeonMonster = _currMonster->getImage();
 	_monsterAlive = true;
 	 

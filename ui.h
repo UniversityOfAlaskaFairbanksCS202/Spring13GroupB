@@ -8,7 +8,8 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "dungeon.h"
-
+#include "Player.h"
+#include "Messenger.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -20,8 +21,7 @@ class UI
 public:
 	void draw();
 	void update();
-	void mouseDown( MouseEvent event );
-	void keyDown( char key, Dungeon & myDungeon );
+	void keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger & myMsg );
 };
 
 
