@@ -28,7 +28,7 @@ Dungeon::Dungeon()
 //
 // pramaters:
 //			dir -- the room direction that is requested 
-void	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
+bool	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 {
 
 	// test to see if the door is avaible 
@@ -36,7 +36,7 @@ void	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 								  || (('d' == dir) && !_doorR))
 			{
 			// if not return
-			return;
+			return false;
 			}
 	
 		// make sure all doors are not closed 
@@ -92,6 +92,7 @@ void	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 							loadResource(  ROOM___R ) ) );
 		}
 
+	return true;
 	
 }// end change room
 

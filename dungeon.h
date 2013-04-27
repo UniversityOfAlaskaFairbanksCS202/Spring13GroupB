@@ -32,7 +32,7 @@ class Dungeon{
 		
 		//Dungeon();// construct stuff
 		
-		void 	ChangeRoom(char	dir ,int lvl);// change the currRoom
+		bool 	ChangeRoom(char	dir ,int lvl);// change the currRoom
 									  // and currMonster
 		void	killMonster()
 				{_monsterAlive = false;}
