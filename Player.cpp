@@ -29,7 +29,7 @@ Player::Player(Messenger &msg)
 
 Player::fightVictor Player::turn(Monster monster, attackOption choice)
 {
-    bool isDead;
+    bool isDead = false;
     
     switch(choice)
     {
