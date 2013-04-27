@@ -28,14 +28,14 @@ class cs_202ProjectApp : public AppBasic {
 void cs_202ProjectApp::setup()
 {
 	_player = Player(_msgEngine);
-	_theDungeon.ChangeRoom('n');
+	_theDungeon.ChangeRoom('n', 1);
 	_uiMsg = UIMessenger(_player);
 }
 
 void cs_202ProjectApp::keyDown( KeyEvent event )
 {
 	
-	_theUI.keyDown(event.getChar() , _theDungeon);
+	_theUI.keyDown(event.getChar() , _theDungeon, _player, _msgEngine);
 }
 
 void cs_202ProjectApp::update()
