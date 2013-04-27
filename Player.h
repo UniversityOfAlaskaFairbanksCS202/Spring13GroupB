@@ -34,7 +34,7 @@ public:
     Player()
 	{}
 	Player(Messenger&);
-    fightVictor turn(Monster monster, attackOption choice);
+    fightVictor turn(Monster &monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
     void enemyDrop (Monster monster);

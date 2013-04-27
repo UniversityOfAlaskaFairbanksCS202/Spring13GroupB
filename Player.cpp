@@ -17,7 +17,7 @@ Player::Player(Messenger &msg)
     _defense = 10 + (Rand::randInt (1, 11));
     _mana = 10 + (Rand::randInt (1, 11));
     _maxMana = _mana;
-    _weaponDamage = 0;
+    _weaponDamage = 8;
     _magicDamage = 5;
     _hpPotion = 10;
     _manaPotion = 10;
@@ -27,7 +27,7 @@ Player::Player(Messenger &msg)
     _numManaPotions = 0;
 }
 
-Player::fightVictor Player::turn(Monster monster, attackOption choice)
+Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 {
     bool isDead = false;
     
@@ -35,15 +35,20 @@ Player::fightVictor Player::turn(Monster monster, attackOption choice)
     {
         //normal attack
         case 0:
-            isDead = monster.hit(attack(monster.getDefense()));
+            isDead = monster.hit(attack(monster.getDefense() - Rand::randInt (1, 6)));
 			_msg->newMessage("You attack the monster.");
             break;
         //magic attack
         case 1:
-            isDead = monster.hit(_magicDamage);
-			_msg->newMessage("You attack with magic.");
-            decrementMana();
-            break;
+			if(_mana > 0)
+			{
+				isDead = monster.hit(_magicDamage);
+				_msg->newMessage("You attack with magic.");
+				decrementMana();
+			}
+			else
+				_msg->newMessage("You have no manna left!");
+			break;
         //drink HP potion
         case 2:
 			if (_numHPPotions > 0)
@@ -51,6 +56,8 @@ Player::fightVictor Player::turn(Monster monster, attackOption choice)
 				drinkHPPotion();
 				_msg->newMessage("Drinking a health potion makes you feel stronger.");
 			}
+			else
+				_msg->newMessage("You have no health potions!");
 			break;
         //drink mana potion
         case 3:
@@ -59,16 +66,18 @@ Player::fightVictor Player::turn(Monster monster, attackOption choice)
 				drinkManaPotion();
 				_msg->newMessage("Drinking a magic potion revives your energy.");
 			}
+			else
+				_msg->newMessage("You have no magic potion!");
 			break;
     }
 
 	if(isDead)
     {
 		_msg->newMessage("You have killed the monster.");
-        return PLAYER;
+		return PLAYER;
     }
     
-    isDead = hit(monster.attack(_defense));
+    isDead = hit(monster.attack(_defense - Rand::randInt (1, 4)));
     
     if(isDead)
     {
