@@ -103,6 +103,7 @@ void Player::levelingSystem()//the leveling system for the character
         oss.str("");//add after each
         oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         
     }
     
@@ -114,8 +115,10 @@ void Player::levelingSystem()//the leveling system for the character
         _defense += 3;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         
     }
     if(_experience == 475)
@@ -126,8 +129,10 @@ void Player::levelingSystem()//the leveling system for the character
         _defense += 3;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
     }
     if(_experience == 600)
     {
@@ -136,9 +141,12 @@ void Player::levelingSystem()//the leveling system for the character
         _attack += 3;
         _defense += 3;
         oss << "You are now level " << _level << ".";
+        oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
         _msg->newMessage(oss.str());
+        oss.str("");
         
     }
 }
@@ -149,6 +157,7 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
     _experience += 10;//change later
     oss << "You got 10 experience points.";
     _msg->newMessage(oss.str());
+    oss.str("");
     levelingSystem();
     
     int baseEnemyDropPercentage = 35;
@@ -175,12 +184,14 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
             {
                 oss << "You got an HP potion!";
                 _msg->newMessage(oss.str());
+                oss.str("");
                 addHPPotion(numPotions);
             }
             else
             {
                 oss << "You got a mana potion!";
                 _msg->newMessage(oss.str());
+                oss.str("");
                 addManaPotion(numPotions);
             }
  
@@ -191,6 +202,7 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
             numCoins = Rand::randInt (1, 11);
             oss << "You got " << numCoins << " coins.";
             _msg->newMessage(oss.str());
+            oss.str("");
             addCoins(numCoins);
         }
     }
@@ -256,42 +268,52 @@ void Player::movementDescription()//called when the player moves, gives some des
         case 1:
             oss << "Your unease grows with each room.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 2:
             oss << "How many rooms could there be?";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 3:
             oss << "The air is cold and damp, and the floor slick.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 4:
             oss << "You smell death.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 5:
             oss << "Something crunches under your foot.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 6:
             oss << "A scream pierces the dead silence.";;
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 7:
             oss << "Your heart beats furiously in fear.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 8:
             oss << "Despite the cold, you're sweating.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 9:
             oss << "You wonder if you'll ever get out of here.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
         case 10:
             oss << "You hear a faint dripping sound.";
             _msg->newMessage(oss.str());
+            oss.str("");
             break;
     }
     
