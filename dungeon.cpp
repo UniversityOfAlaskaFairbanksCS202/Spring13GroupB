@@ -53,6 +53,7 @@ void	Dungeon::ChangeRoom(char	dir = 'n' )// need to add palyer level
 
 	_currMonster = new Monster(1); 
 	_DungeonMonster = _currMonster->getImage();
+	_monsterAlive = true;
 	 
 	// choose the proper room image
 	if (_doorF && _doorL && _doorR) // all doors
@@ -102,7 +103,7 @@ void	Dungeon::draw()
 {
 	gl::draw(_DungeonBG, getWindowBounds() );
 	
-	if ((_currMonster->getHitPoints()) > 0)
+	if (_monsterAlive)
 	{
 	gl::enableAlphaBlending();
 	gl::draw(_DungeonMonster, getWindowBounds() );

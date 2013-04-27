@@ -6,9 +6,19 @@
 void  UI::keyDown( char key, Dungeon & myDungeon )
 {
 	// ui for movement
-	if ((key == 'w')||(key == 'a')||(key == 'd'))
+	if (!myDungeon.occupied())
 	{
-		myDungeon.ChangeRoom(key);
+		if ((key == 'w')||(key == 'a')||(key == 'd'))
+		{
+			myDungeon.ChangeRoom(key);
+		}
+	}
+	else
+	{
+		if (key == 'k')
+		{
+			myDungeon.killMonster();
+		}
 	}
 	
 }

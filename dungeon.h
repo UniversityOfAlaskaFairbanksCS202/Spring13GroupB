@@ -34,7 +34,11 @@ class Dungeon{
 		
 		void 	ChangeRoom(char	dir );// change the currRoom
 									  // and currMonster
-		void	killMonster();
+		void	killMonster()
+				{_monsterAlive = false;}
+
+		bool	occupied()
+				{return _monsterAlive;}
 		
 		// void	Dungeon::draw() 
 		// 		the draw functon for the dungeon 
@@ -53,6 +57,7 @@ class Dungeon{
 		gl::Texture _DungeonBG;
 		gl::Texture _DungeonMonster;
 		Monster * _currMonster;
+		bool	_monsterAlive; 
 };
 
 
