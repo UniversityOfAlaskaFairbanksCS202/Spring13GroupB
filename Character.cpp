@@ -32,7 +32,7 @@ int Character::attack(int defense)
 {
     if(_attack > defense)
     {
-        return hit(_weaponDamage);
+        return _weaponDamage;
     }
     else
     {

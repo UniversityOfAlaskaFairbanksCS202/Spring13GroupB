@@ -46,14 +46,20 @@ Player::fightVictor Player::turn(Monster monster, attackOption choice)
             break;
         //drink HP potion
         case 2:
-            drinkHPPotion();
-			_msg->newMessage("Drinking a health potion makes you feel stronger.");
+			if (_numHPPotions > 0)
+			{
+				drinkHPPotion();
+				_msg->newMessage("Drinking a health potion makes you feel stronger.");
+			}
 			break;
         //drink mana potion
         case 3:
-            drinkManaPotion();
-			_msg->newMessage("Drinking a magic potion revives your energy.");
-            break;
+			if (_numManaPotions > 0)
+			{
+				drinkManaPotion();
+				_msg->newMessage("Drinking a magic potion revives your energy.");
+			}
+			break;
     }
 
 	if(isDead)
