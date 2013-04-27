@@ -95,6 +95,7 @@ void Player::levelingSystem()//the leveling system for the character
         _defense += 3;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
+        oss.str("");//add after each
         oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
         _msg->newMessage(oss.str());
         
@@ -351,22 +352,22 @@ void Player::setExperience(int exp)
 
 int Player::getHPPotions()
 {
-    return _hpPotion;
+    return _numHPPotions;
 }
 
 void Player::setHPPotions(int potions)
 {
-    _hpPotion = potions;
+    _numHPPotions = potions;
 }
 
 int Player::getManaPotions()
 {
-    return _manaPotion;
+    return _numManaPotions;
 }
 
 void Player::setManaPotions(int potions)
 {
-    _manaPotion = potions;
+    _numManaPotions = potions;
 }
 
 int Player::getCoins()
