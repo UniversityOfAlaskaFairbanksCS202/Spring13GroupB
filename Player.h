@@ -59,7 +59,7 @@ public:
     void setManaPotions(int potions);
     int getCoins();
     void setCoins(int coins);
-    
+    int getLevel();
 };
 
 #endif /* defined(__Character__Player__) */

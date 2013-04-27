@@ -379,3 +379,7 @@ void Player::decrementMana()
     _mana -= 1;
 }
 
+int Player::getLevel()
+{
+	return _level;
+}
