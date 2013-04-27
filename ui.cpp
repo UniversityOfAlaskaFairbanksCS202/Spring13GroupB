@@ -59,10 +59,6 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		if (key == 'h')
 		{
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKHP);
-				if (victor == Player::PLAYER)
-					{
-					myDungeon.killMonster();
-					}
 				if (victor == Player::MONSTER)
 					{
 					myMsg.newMessage("You've Just Died, the Game will now exit");
@@ -72,16 +68,18 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 		if (key == 'g')
 		{
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKMANA);
-				if (victor == Player::PLAYER)
-					{
-					myDungeon.killMonster();
-					}
 				if (victor == Player::MONSTER)
 					{
 					myMsg.newMessage("You've Just Died, the Game will now exit");
 					exit(0);
 					}
+
 		}
+		if (key == '0')
+			{
+				myPlayer.enemyDrop(myDungeon.getMonster());
+				myDungeon.killMonster();
+			}
 		
 	}
 	
