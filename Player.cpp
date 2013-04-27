@@ -11,11 +11,11 @@
 Player::Player(Messenger &msg)
 {
 	_msg = &msg;
-    _attack = 10 + (Rand::randInt (1, 10));
-    _hitPoints = 10 + (Rand::randInt (1, 10));
+    _attack = 10 + (Rand::randInt (1, 11));
+    _hitPoints = 10 + (Rand::randInt (1, 11));
     _maxHitPoints = _hitPoints;
-    _defense = 10 + (Rand::randInt (1, 10));
-    _mana = 10 + (Rand::randInt (1, 10));
+    _defense = 10 + (Rand::randInt (1, 11));
+    _mana = 10 + (Rand::randInt (1, 11));
     _maxMana = _mana;
     _weaponDamage = 0;
     _magicDamage = 5;
@@ -76,7 +76,7 @@ bool Player::randomEncounter()//function for randomly generating an enemy encoun
     
     bool enemyEncountered = false;
     int randomChanceOfEncounter = 0;
-    randomChanceOfEncounter = (Rand::randInt (1, 100));
+    randomChanceOfEncounter = (Rand::randInt (1, 101));
     //cout << randomChanceOfEncounter << endl;
     if(randomChanceOfEncounter > chanceOfEncouter)
         enemyEncountered = true;
@@ -85,14 +85,19 @@ bool Player::randomEncounter()//function for randomly generating an enemy encoun
 
 void Player::levelingSystem()//the leveling system for the character
 {
+    ostringstream oss;
+    
     if(_experience == 100)
     {
         _level ++;
         _hitPoints += 10;
         _attack += 3;
         _defense += 3;
-        cout << "You are now level " << _level << "." << endl;
-        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
+        oss << "You are now level " << _level << ".";
+        _msg->newMessage(oss.str());
+        oss.str("");//add after each
+        oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
+        _msg->newMessage(oss.str());
         
     }
     
@@ -102,8 +107,10 @@ void Player::levelingSystem()//the leveling system for the character
         _hitPoints += 10;
         _attack += 3;
         _defense += 3;
-        cout << "You are now level " << _level << "." << endl;
-        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
+        oss << "You are now level " << _level << ".";
+        _msg->newMessage(oss.str());
+        oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
+        _msg->newMessage(oss.str());
         
     }
     if(_experience == 475)
@@ -112,8 +119,10 @@ void Player::levelingSystem()//the leveling system for the character
         _hitPoints += 10;
         _attack += 3;
         _defense += 3;
-        cout << "You are now level " << _level << "." << endl;
-        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
+        oss << "You are now level " << _level << ".";
+        _msg->newMessage(oss.str());
+        oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
+        _msg->newMessage(oss.str());
     }
     if(_experience == 600)
     {
@@ -121,16 +130,20 @@ void Player::levelingSystem()//the leveling system for the character
         _hitPoints += 10;
         _attack += 3;
         _defense += 3;
-        cout << "You are now level " << _level << "." << endl;
-        cout << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << "." << endl;
+        oss << "You are now level " << _level << ".";
+        _msg->newMessage(oss.str());
+        oss << "Your hit points are now " << _hitPoints << ", your attack is now " << _attack << ", your dodge is now " << _defense << ".";
+        _msg->newMessage(oss.str());
         
     }
 }
 
 void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
 {
+    ostringstream oss;
     _experience += 10;//change later
-    cout << "You got 10 experience points." << endl;
+    oss << "You got 10 experience points.";
+    _msg->newMessage(oss.str());
     levelingSystem();
     
     int baseEnemyDropPercentage = 35;
@@ -144,32 +157,35 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
     int coinDropPercentage = 30;
     int randomCoinDropPercentage = 0;
     
-    randomEnemyDropPercentage = Rand::randInt (1, 100);
+    randomEnemyDropPercentage = Rand::randInt (1, 101);
     //cout << "Random enemy drop percentage is " << randomEnemyDropPercentage << endl;
     if(randomEnemyDropPercentage > baseEnemyDropPercentage)
     {
-        randomPotionDropPercentage = Rand::randInt (1, 100);
+        randomPotionDropPercentage = Rand::randInt (1, 101);
         if(randomPotionDropPercentage > potionDropPercentage)
         {
             int kindOfPotion;
-            kindOfPotion = Rand::randInt(1,2);
+            kindOfPotion = Rand::randInt(1,3);
             if(kindOfPotion == 1)
             {
-                cout << "You got an HP potion!" << endl;
+                oss << "You got an HP potion!";
+                _msg->newMessage(oss.str());
                 addHPPotion(numPotions);
             }
             else
             {
-                cout << "You got an mana potion!" << endl;
+                oss << "You got a mana potion!";
+                _msg->newMessage(oss.str());
                 addManaPotion(numPotions);
             }
  
         }
-        randomCoinDropPercentage = Rand::randInt (1, 10);
+        randomCoinDropPercentage = Rand::randInt (1, 11);
         if(randomCoinDropPercentage > coinDropPercentage)
         {
-            numCoins = Rand::randInt (1, 10);
-            cout << "You got " << numCoins << " coins." << endl;
+            numCoins = Rand::randInt (1, 11);
+            oss << "You got " << numCoins << " coins.";
+            _msg->newMessage(oss.str());
             addCoins(numCoins);
         }
     }
@@ -180,7 +196,7 @@ void Player::treasureChest()//randomly generates chests for the player to find
 {
     //cout << "Called the treasure chest function" << endl;
     int baseChanceOfChest = 50;
-    int randomChanceOfChest = Rand::randInt (1, 100);
+    int randomChanceOfChest = Rand::randInt (1, 101);
     
     int numPotions = 0;
     int potionDropPercentage = 70;
@@ -197,7 +213,7 @@ void Player::treasureChest()//randomly generates chests for the player to find
         cin >> chestInput;
         if(toupper(chestInput) == 'Y')
         {
-            randomPotionDropPercentage = Rand::randInt (1, 100);
+            randomPotionDropPercentage = Rand::randInt (1, 101);
             if(randomPotionDropPercentage > potionDropPercentage)
             {
                 cout << "You got a potion!" << endl;
@@ -205,10 +221,10 @@ void Player::treasureChest()//randomly generates chests for the player to find
                 addHPPotion(numPotions);
                 
             }
-            randomCoinDropPercentage = Rand::randInt (1, 100);
+            randomCoinDropPercentage = Rand::randInt (1, 101);
             if(randomCoinDropPercentage > coinDropPercentage)
             {
-                numCoins = Rand::randInt (1, 10);
+                numCoins = Rand::randInt (1, 11);
                 cout << "You got " << numCoins << " coins." << endl;
                 addCoins(numCoins);
             }
@@ -227,39 +243,50 @@ void Player::treasureChest()//randomly generates chests for the player to find
 
 void Player::movementDescription()//called when the player moves, gives some description of the surroundings to spice things up
 {
+    ostringstream oss;
     int randomDescription;
-    randomDescription = Rand::randInt (1, 10);
+    randomDescription = Rand::randInt (1, 11);
     switch(randomDescription)
     {
         case 1:
-            cout << "You move deeper into the gloom, with a growing sense of unease." << endl;
+            oss << "Your unease grows with each room.";
+            _msg->newMessage(oss.str());
             break;
         case 2:
-            cout << "As you take another step, you wonder how long this labyrinth could be, and what awaits you deeper inside." << endl;
+            oss << "How many rooms could there be?";
+            _msg->newMessage(oss.str());
             break;
         case 3:
-            cout << "The air is cold and damp, and the floor slick.  Something brushes your cheek, which after frantic waving of your hands you realize is just a spider's web." << endl;
+            oss << "The air is cold and damp, and the floor slick.";
+            _msg->newMessage(oss.str());
             break;
         case 4:
-            cout << "The walls of the passageway have a faint glow, which upon closer inspection you discover is because of luminescent fungus." << endl;
+            oss << "You smell death.";
+            _msg->newMessage(oss.str());
             break;
         case 5:
-            cout << "Something crunches under your foot.  In the faint light you can make out bones, but they don't look like any kind of bones you've ever seen before." << endl;
+            oss << "Something crunches under your foot.";
+            _msg->newMessage(oss.str());
             break;
         case 6:
-            cout << "A sudden sound pierces the dead silence.  It's a scream, but not human.  It's high pitched and trails off into a groan before ending suddenly." << endl;
+            oss << "A scream pierces the dead silence.";;
+            _msg->newMessage(oss.str());
             break;
         case 7:
-            cout << "You slip on something but manage not to fall.  You decide it's better not to see what it was." << endl;
+            oss << "Your heart beats furiously in fear.";
+            _msg->newMessage(oss.str());
             break;
         case 8:
-            cout << "Despite the cold, you're sweating.  You feel your sweat trickling down your back and sides." << endl;
+            oss << "Despite the cold, you're sweating.";
+            _msg->newMessage(oss.str());
             break;
         case 9:
-            cout << "You wonder if you'll ever get out of here.  You find yourself thinking of home, your friends and family." << endl;
+            oss << "You wonder if you'll ever get out of here.";
+            _msg->newMessage(oss.str());
             break;
         case 10:
-            cout << "The only thing you hear is a faint dripping sound in the distance." << endl;
+            oss << "You hear a faint dripping sound.";
+            _msg->newMessage(oss.str());
             break;
     }
     
@@ -325,22 +352,22 @@ void Player::setExperience(int exp)
 
 int Player::getHPPotions()
 {
-    return _hpPotion;
+    return _numHPPotions;
 }
 
 void Player::setHPPotions(int potions)
 {
-    _hpPotion = potions;
+    _numHPPotions = potions;
 }
 
 int Player::getManaPotions()
 {
-    return _manaPotion;
+    return _numManaPotions;
 }
 
 void Player::setManaPotions(int potions)
 {
-    _manaPotion = potions;
+    _numManaPotions = potions;
 }
 
 int Player::getCoins()

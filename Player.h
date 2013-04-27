@@ -10,8 +10,11 @@
 #define __Character__Player__
 
 #include <iostream>
+#include <sstream>
 #include "Character.h"
 
+using std::ostringstream;
+using std::string;
 using std::cout;
 using std::endl;
 using std::cin;
