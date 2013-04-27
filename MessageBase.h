@@ -11,9 +11,9 @@
 #include <GdiPlus.h>
 
 #include <string>
-#include "cinder\Text.h"
-#include "cinder\gl\Texture.h"
-#include "cinder\app\AppBasic.h"
+#include "cinder/Text.h"
+#include "cinder/gl/Texture.h"
+#include "cinder/app/AppBasic.h"
 
 
 using namespace ci;
