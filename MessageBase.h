@@ -4,11 +4,13 @@
 // The following five lines are required to start GDI+
 // which is needed to create a TextLayout.
 
+#ifdef _WIN32 // for mac compatibility
 #include <windows.h>
 #include <objidl.h>
 #define max(a, b) (((a) > (b)) ? (a) : (b))
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 #include <GdiPlus.h>
+#endif
 
 #include <string>
 #include "cinder/Text.h"

@@ -9,7 +9,9 @@ MessageBase::MessageBase()
 {
 	// These lines start GDI+, which must be done
 	// before a TextLayout object can be created.
+#ifdef _WIN32 // for mac compatibility
 	Gdiplus::GdiplusStartupInput _gdiplusStartupInput;
 	ULONG_PTR _GdiplusToken;
 	Gdiplus::GdiplusStartup( &_GdiplusToken, &_gdiplusStartupInput, NULL );
+#endif
 }
