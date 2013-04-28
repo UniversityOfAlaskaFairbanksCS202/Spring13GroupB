@@ -27,6 +27,7 @@ class cs_202ProjectApp : public AppBasic {
 
 void cs_202ProjectApp::setup()
 {
+	Rand::randomize();
 	_player = Player(_msgEngine);
 	_theDungeon.ChangeRoom('n', 1);
 	_uiMsg = UIMessenger(_player);
