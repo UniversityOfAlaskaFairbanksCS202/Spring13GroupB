@@ -12,13 +12,13 @@ Monster::Monster(int level)
 	// These constants specify how many random points can be added to
 	// attributes when initializing a character
 	const int MIN_VARIATION = 0;
-	const int MAX_VARIATION = 11; // One above max
+	const int MAX_VARIATION = 6; // One above max
 
 	_attack = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _hitPoints = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _maxHitPoints = _hitPoints;
     _defense = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
-    _weaponDamage = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
+    _weaponDamage = 3 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _level = level;
 	type();
 }

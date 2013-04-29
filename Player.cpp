@@ -8,23 +8,24 @@
 
 #include "Player.h"
 
+
 Player::Player(Messenger &msg)
 {
 	_msg = &msg;
-    _attack = 10 + (Rand::randInt (1, 11));
-    _hitPoints = 10 + (Rand::randInt (1, 11));
+    _attack = 10 + Rand::randInt (1, 11);
+    _hitPoints = 10 + Rand::randInt (1, 11);
     _maxHitPoints = _hitPoints;
-    _defense = 10 + (Rand::randInt (1, 11));
-    _mana = 10 + (Rand::randInt (1, 11));
+    _defense = 10 + Rand::randInt (1, 11);
+    _mana = 10 + Rand::randInt (1, 11);
     _maxMana = _mana;
     _weaponDamage = 8;
-    _magicDamage = 5;
+    _magicDamage = 5 ;
     _hpPotion = 10;
     _manaPotion = 10;
     _experience = 0;
     _level = 1;
-    _numHPPotions = 0;
-    _numManaPotions = 0;
+    _numHPPotions = 1;
+    _numManaPotions = 1;
 }
 
 Player::fightVictor Player::turn(Monster &monster, attackOption choice)
@@ -77,7 +78,7 @@ Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 		return PLAYER;
     }
     
-    isDead = hit(monster.attack(_defense - Rand::randInt (1, 4)));
+    isDead = hit(monster.attack(_defense - Rand::randInt (1, 3)));
     
     if(isDead)
     {
@@ -125,9 +126,9 @@ void Player::levelingSystem()//the leveling system for the character
     if(_experience == 275)
     {
         _level ++;
-        _hitPoints += 10;
-        _attack += 3;
-        _defense += 3;
+        _hitPoints += 10 + Rand::randInt (1, 11);
+        _attack += 10 + Rand::randInt (1, 11);
+        _defense += 10 + Rand::randInt (1, 11);
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");
@@ -139,9 +140,9 @@ void Player::levelingSystem()//the leveling system for the character
     if(_experience == 475)
     {
         _level ++;
-        _hitPoints += 10;
-        _attack += 3;
-        _defense += 3;
+        _hitPoints += 10 + Rand::randInt (1, 11);
+        _attack += 10 + Rand::randInt (1, 11);
+        _defense += 10 + Rand::randInt (1, 11);
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");
@@ -152,9 +153,9 @@ void Player::levelingSystem()//the leveling system for the character
     if(_experience == 600)
     {
         _level ++;
-        _hitPoints += 10;
-        _attack += 3;
-        _defense += 3;
+        _hitPoints += 10 + Rand::randInt (1, 11);
+        _attack += 10 + Rand::randInt (1, 11);
+        _defense += 10 + Rand::randInt (1, 11);
         oss << "You are now level " << _level << ".";
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
