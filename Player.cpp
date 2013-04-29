@@ -30,22 +30,33 @@ Player::Player(Messenger &msg)
 
 Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 {
+	ostringstream oss;
+
     bool isDead = false;
+	int damage = 0;
     
     switch(choice)
     {
         //normal attack
         case 0:
-            isDead = monster.hit(attack(monster.getDefense() - Rand::randInt (1, 6)));
-			_msg->newMessage("You attack the monster.");
+			damage = attack(monster.getDefense() - Rand::randInt (1, 6));
+            isDead = monster.hit(damage);
+			if (damage > 0)
+				oss << "You attack the monster, doing " << damage << " points of damage.";
+			else
+				oss << "Your attack missed.";
+			_msg->newMessage(oss.str());
+			oss.str("");
             break;
         //magic attack
         case 1:
 			if(_mana > 0)
 			{
 				isDead = monster.hit(_magicDamage);
-				_msg->newMessage("You attack with magic.");
+				oss << "You attack with magic, doing " << _magicDamage << " points of damage.";
+				_msg->newMessage(oss.str());
 				decrementMana();
+				oss.str("");
 			}
 			else
 				_msg->newMessage("You have no manna left!");
@@ -78,8 +89,17 @@ Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 		return PLAYER;
     }
     
-    isDead = hit(monster.attack(_defense - Rand::randInt (1, 3)));
+	damage = monster.attack(_defense - Rand::randInt (1, 3));
+
+    isDead = hit(damage);
+
+	if (damage > 0)
+		oss << "The monster hits you, doing " << damage << " points of damage.";
+	else
+		oss << "The monster's attack misses.";
     
+	_msg->newMessage(oss.str());
+
     if(isDead)
     {
         return MONSTER;
