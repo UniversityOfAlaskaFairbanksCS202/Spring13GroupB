@@ -88,7 +88,7 @@ Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 		_msg->newMessage("You have killed the monster.");
 		return PLAYER;
     }
-    
+
 	damage = monster.attack(_defense - Rand::randInt (1, 3));
 
     isDead = hit(damage);
@@ -445,7 +445,7 @@ void Player::setCoins(int coins)
 
 void Player::drinkHPPotion()
 {
-     _hitPoints = _hpPotion;
+     _hitPoints += _hpPotion;
     
     if(_hitPoints > _maxHitPoints)
     {
@@ -455,7 +455,7 @@ void Player::drinkHPPotion()
 }
 void Player::drinkManaPotion()
 {
-    _mana = _manaPotion;
+    _mana += _manaPotion;
     
     if(_mana > _maxMana)
     {
