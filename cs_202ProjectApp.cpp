@@ -11,7 +11,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class cs_202ProjectApp : public AppBasic {
+class DungeonOfEvil : public AppBasic {
 	public:
 	void setup();
 	void keyDown( KeyEvent event );	
@@ -28,22 +28,22 @@ class cs_202ProjectApp : public AppBasic {
 		bool _firstRun;
 };
 
-void cs_202ProjectApp::setup()
+void DungeonOfEvil::setup()
 {
 	Rand::randomize();
 	_player = Player(_msgEngine);
-	_theDungeon.ChangeRoom('n', 1);
+	_theDungeon = Dungeon();
 	_uiMsg = UIMessenger(_player);
 	_firstRun = true;
 }
 
-void cs_202ProjectApp::keyDown( KeyEvent event )
+void DungeonOfEvil::keyDown( KeyEvent event )
 {
 	
 	_theUI.keyDown(event.getChar() , _theDungeon, _player, _splashScreen);
 }
 
-void cs_202ProjectApp::update()
+void DungeonOfEvil::update()
 {
 	if(_firstRun)
 	{
@@ -53,7 +53,7 @@ void cs_202ProjectApp::update()
 	_uiMsg.update();
 }
 
-void cs_202ProjectApp::draw()
+void DungeonOfEvil::draw()
 {
 	// clear out the window with black
 	//gl::clear( Color( 0, 0, 0 ) );
@@ -63,4 +63,4 @@ void cs_202ProjectApp::draw()
 	_splashScreen.draw();
 }
 
-CINDER_APP_BASIC( cs_202ProjectApp, RendererGl )
+CINDER_APP_BASIC( DungeonOfEvil, RendererGl )
