@@ -26,6 +26,15 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, ImportantM
 				}
 		
 		}
+		if (key == 'h')
+		{
+			myPlayer.drinkHPPotion();
+		}
+		if (key == 'g')
+		{
+			myPlayer.drinkManaPotion();
+		}
+
 	}
 	else
 	{
@@ -54,7 +63,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, ImportantM
 					}
 				if (victor == Player::MONSTER)
 					{
-						splash.splashMessage("You've Just Died,\nthe Game will now exit", EXIT_TIME, true);
+						splash.splashMessage("You've Just Died,\r\nthe Game will now exit", EXIT_TIME, true);
 					}
 		}
 		if (key == 'h')
