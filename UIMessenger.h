@@ -24,7 +24,7 @@ public:
 	UIMessenger()
 	{}
 	UIMessenger(Player&);
-	void draw() const;
+	void draw();
 	void update();
 };
 

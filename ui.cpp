@@ -4,10 +4,11 @@
 //void  UI::keyDown( char key, Dungeon & myDungeon )
 //		this is the ui function for key presses
 //
-void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger & myMsg)
+void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, ImportantMessage & splash)
 {
-	
 
+	const int EXIT_TIME = 3;
+	
 	if (key == '`' )
 		{
 			exit(0);
@@ -40,8 +41,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 					}
 				if (victor == Player::MONSTER)
 					{
-					myMsg.newMessage("You've Just Died, the Game will now exit");
-					exit(0);
+						splash.splashMessage("You've Just Died,\nthe Game will now exit", EXIT_TIME, true);
 					}
 		}
 		if (key == 'm')
@@ -54,8 +54,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 					}
 				if (victor == Player::MONSTER)
 					{
-					myMsg.newMessage("You've Just Died, the Game will now exit");
-					exit(0);
+						splash.splashMessage("You've Just Died,\nthe Game will now exit", EXIT_TIME, true);
 					}
 		}
 		if (key == 'h')
@@ -63,8 +62,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKHP);
 				if (victor == Player::MONSTER)
 					{
-					myMsg.newMessage("You've Just Died, the Game will now exit");
-					exit(0);
+						splash.splashMessage("You've Just Died,\nthe Game will now exit", EXIT_TIME, true);
 					}
 		}
 		if (key == 'g')
@@ -72,8 +70,7 @@ void  UI::keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger 
 			victor = myPlayer.turn(myDungeon.getMonster(),Player::DRINKMANA);
 				if (victor == Player::MONSTER)
 					{
-					myMsg.newMessage("You've Just Died, the Game will now exit");
-					exit(0);
+						splash.splashMessage("You've Just Died,\nthe Game will now exit", EXIT_TIME, true);
 					}
 
 		}
