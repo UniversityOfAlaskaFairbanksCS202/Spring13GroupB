@@ -63,23 +63,11 @@ Player::fightVictor Player::turn(Monster &monster, attackOption choice)
 			break;
         //drink HP potion
         case 2:
-			if (_numHPPotions > 0)
-			{
-				drinkHPPotion();
-				_msg->newMessage("Drinking a health potion makes you feel stronger.");
-			}
-			else
-				_msg->newMessage("You have no health potions!");
+			drinkHPPotion();
 			break;
         //drink mana potion
         case 3:
-			if (_numManaPotions > 0)
-			{
 				drinkManaPotion();
-				_msg->newMessage("Drinking a magic potion revives your energy.");
-			}
-			else
-				_msg->newMessage("You have no magic potion!");
 			break;
     }
 
@@ -445,23 +433,35 @@ void Player::setCoins(int coins)
 
 void Player::drinkHPPotion()
 {
-     _hitPoints += _hpPotion;
+	if(_numHPPotions > 0)
+	{
+		 _hitPoints += _hpPotion;
     
-    if(_hitPoints > _maxHitPoints)
-    {
-        _hitPoints = _maxHitPoints;
-    }
-    subtractHPPotion();
+		if(_hitPoints > _maxHitPoints)
+		{
+			_hitPoints = _maxHitPoints;
+		}
+		subtractHPPotion();
+		_msg->newMessage("Drinking a health potion makes you feel stronger.");
+	}
+	else
+		_msg->newMessage("You have no health potions!");
 }
 void Player::drinkManaPotion()
 {
-    _mana += _manaPotion;
+	if(_numManaPotions > 0)
+	{
+		_mana += _manaPotion;
     
-    if(_mana > _maxMana)
-    {
-        _mana = _maxMana;
-    }
-    subtractManaPotions();
+		if(_mana > _maxMana)
+		{
+			_mana = _maxMana;
+		}
+		subtractManaPotions();
+		_msg->newMessage("Drinking a magic potion revives your energy.");
+	}
+	else
+		_msg->newMessage("You have no magic potion!");
 }
 
 void Player::decrementMana()
