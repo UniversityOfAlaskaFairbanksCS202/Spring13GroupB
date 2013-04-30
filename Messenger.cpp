@@ -18,7 +18,7 @@ void Messenger::newMessage(string newMsg)
 }
 
 // This function draws the messages to screen.
-void Messenger::draw() const
+void Messenger::draw()
 {
 	// msgBox and msgTexture are created here
 	// because they must be created after GDI+

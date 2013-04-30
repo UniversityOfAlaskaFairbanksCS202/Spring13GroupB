@@ -41,7 +41,7 @@ void UIMessenger::update()
 	oss.str("");
 }
 
-void UIMessenger::draw() const
+void UIMessenger::draw()
 {
 	// msgBox and msgTexture are created here
 	// because they must be created after GDI+

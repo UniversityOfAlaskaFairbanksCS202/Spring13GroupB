@@ -10,6 +10,7 @@
 #include "dungeon.h"
 #include "Player.h"
 #include "Messenger.h"
+#include "ImportantMessage.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -21,7 +22,7 @@ class UI
 public:
 	void draw();
 	void update();
-	void keyDown( char key, Dungeon & myDungeon , Player & myPlayer, Messenger & myMsg );
+	void keyDown( char key, Dungeon & myDungeon , Player & myPlayer, ImportantMessage & splash );
 };
 
 

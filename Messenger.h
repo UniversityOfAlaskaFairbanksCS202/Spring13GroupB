@@ -51,7 +51,7 @@ public:
 		_size = 16.0f/480;
 	}
 	void newMessage(string);
-	void draw() const;
+	void draw();
 };
 
 #endif
