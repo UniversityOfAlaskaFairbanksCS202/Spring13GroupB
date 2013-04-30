@@ -13,13 +13,19 @@ using namespace std;
 
 
 
-/*
+
 Dungeon::Dungeon()
 {
-	_DungeonMonster = gl::Texture( loadImage( 
-							loadResource(  MONS___1 ) ) );
+	_doorF = true;
+	_doorL = false;
+	_doorR = false;
+
+	_DungeonBG = gl::Texture( loadImage(
+						loadResource(  ROOM_F__ ) ) );
+
+	_monsterAlive = false;
+	
 }
-*/
 
 
 
@@ -47,14 +53,22 @@ bool	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 			_doorL = Rand::randBool(); // ""
 			_doorR = Rand::randBool(); // ""
 			}	while (!_doorF && !_doorL && !_doorR);
-			
-	if (!_currMonster)
-			delete _currMonster;
 
-	_currMonster = new Monster(lvl); 
-	_DungeonMonster = _currMonster->getImage();
-	_monsterAlive = true;
-	 
+	// make sure the monster is dead
+	killMonster();
+
+	// delete old monster
+	if (!_currMonster){
+		delete _currMonster;
+		}
+
+	if(Rand::randBool())
+		{
+		_currMonster = new Monster(lvl); 
+		_DungeonMonster = _currMonster->getImage();
+		_monsterAlive = true;
+		}	
+
 	// choose the proper room image
 	if (_doorF && _doorL && _doorR) // all doors
 		{

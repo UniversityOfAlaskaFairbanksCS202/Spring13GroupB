@@ -30,7 +30,7 @@ class Dungeon{
 	public:
 		enum moveDir{FOWARD,BACK,LEFT,RIGHT,BOSS};
 		
-		//Dungeon();// construct stuff
+		Dungeon();// construct stuff
 		
 		bool 	ChangeRoom(char	dir ,int lvl);// change the currRoom
 									  // and currMonster
