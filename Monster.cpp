@@ -56,7 +56,7 @@ void Monster::type()
 			break;
 	}
 }
-
+// Basic get functions
 string Monster::getName() const
 {
 	return _name;

@@ -2,7 +2,9 @@
 // By: John Cheshire
 // 4/25/2013
 // This is a base class for the Messenger and UIMessage
-// classes. It implements text output to the screen.
+// classes.
+// Its main function is to contain common member variables
+// and start the GDI+ that is required in windows.
 
 
 MessageBase::MessageBase()

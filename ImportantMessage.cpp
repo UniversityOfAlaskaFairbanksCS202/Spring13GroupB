@@ -1,3 +1,5 @@
+// The ImportantMessage class implements a splash-screen-type message.
+
 #include "ImportantMessage.h"
 
 ImportantMessage::ImportantMessage()
@@ -11,6 +13,8 @@ ImportantMessage::ImportantMessage()
 	_msg = "";
 }
 
+// This function is called to create a new splash screen.
+// If a quitGame is passed as true, the game will exit after the message
 void ImportantMessage::splashMessage(string msg, int waitTime, bool quitGame)
 {
 	_msg = msg;
@@ -19,6 +23,8 @@ void ImportantMessage::splashMessage(string msg, int waitTime, bool quitGame)
 	_startTime = static_cast<int>(getElapsedSeconds());
 }
 
+// The draw function draws the splash screen and decides when to stop 
+// drawing and if to exit after the time is up.
 void ImportantMessage::draw()
 {
 	if (_msg != "")

@@ -1,4 +1,6 @@
 #include "UIMessenger.h"
+// By: John Cheshire
+// UIMessenger displays the player's health, manna, etc.
 
 using std::ostringstream;
 
@@ -18,7 +20,8 @@ UIMessenger::UIMessenger(Player &player)
 	_size = 32.0f/480;
 	UIMessenger::update();
 }
-
+// Update gets the player's current status at each update
+// of the program
 void UIMessenger::update()
 {
 	ostringstream oss;

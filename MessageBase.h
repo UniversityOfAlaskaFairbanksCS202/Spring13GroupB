@@ -3,7 +3,6 @@
 
 // The following five lines are required to start GDI+
 // which is needed to create a TextLayout.
-
 #ifdef _WIN32 // for mac compatibility
 #include <windows.h>
 #include <objidl.h>
@@ -34,7 +33,7 @@ protected:
 
 public:
 	MessageBase();
-	virtual void draw() = 0;
+	virtual void draw() = 0; // all messagebase derivated classes need a way to draw.
 };
 
 #endif
