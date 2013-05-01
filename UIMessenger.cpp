@@ -35,11 +35,11 @@ void UIMessenger::update()
 	_row21 = oss.str();
 	oss.str("");
 
-	oss << "Manna: " <<_player->getMana();
+	oss << "Mana: " <<_player->getMana();
 	_row12 = oss.str();
 	oss.str("");
 	
-	oss << "Manna Potions: " << _player->getManaPotions();
+	oss << "Mana Potions: " << _player->getManaPotions();
 	_row22 = oss.str();
 	oss.str("");
 }
