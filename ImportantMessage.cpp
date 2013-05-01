@@ -4,7 +4,7 @@
 
 ImportantMessage::ImportantMessage()
 {
-	_x = 40.0f/640;
+	_x = 20.0f/640;
 	_y = 200.0f/480;
 	_red = 1.0f;
 	_green = 1.0f;

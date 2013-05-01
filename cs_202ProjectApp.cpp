@@ -47,7 +47,7 @@ void DungeonOfEvil::update()
 {
 	if(_firstRun)
 	{
-		_splashScreen.splashMessage("Welcome to the game!\n\rPress A, W, D to move.", 5, false);
+		_splashScreen.splashMessage("Welcome to the game!\nPress A, W, D to move.\nSpace and m for attack and magic.\nh and g for potions.", 5, false);
 		_firstRun = false;
 	}
 	_uiMsg.update();
