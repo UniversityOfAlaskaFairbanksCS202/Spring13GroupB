@@ -22,8 +22,22 @@
 #define MONS___3  CINDER_RESOURCE( ./resources/, monster_3.png, 137, IMAGE )
 #define MONS___4  CINDER_RESOURCE( ./resources/, monster_4.png, 138, IMAGE )
 
-#define RES_BOOYAH		CINDER_RESOURCE( ../resources/, booyah.mp3, 128, MP3 )
-#define RES_BOOYAHWAV	CINDER_RESOURCE( ../resources/, booyah.wav, 129, WAV )
+#define SWORD_CUT_1 CINDER_RESOURCE( ./resources/, SwordCutThroughFlesh01.wav, 139, WAV)
+#define SWORD_CUT_2 CINDER_RESOURCE( ./resources/, SwordCutThroughFlesh02.wav, 140, WAV)
+#define SWORD_CUT_3 CINDER_RESOURCE( ./resources/, SwordCutThroughFlesh03.wav, 141, WAV)
+#define SWORD_CUT_4 CINDER_RESOURCE( ./resources/, SwordSwipeClang.wav, 142, WAV)
+
+
+#define MAGIC_ATTACK CINDER_RESOURCE( ./resources/, MagicAttack.wav, 143, WAV)
+#define SWALLOW CINDER_RESOURCE( ./resources/, Swallow.wav, 144, WAV)
+#define MONSTER_SCREECH CINDER_RESOURCE( ./resources/, MonsterScreech.wav, 145, WAV)
+#define SNARL CINDER_RESOURCE( ./resources/, Snarl.wav, 146, WAV)
+#define SUPER_SNARL CINDER_RESOURCE( ./resources/, SuperSnarl.wav, 147, WAV)
+#define DOOR_OPEN CINDER_RESOURCE( ./resources/, DoorOpenClose.wav, 148, WAV)
+#define DRAGON_HISS CINDER_RESOURCE( ./resources/, DragonHiss.wav, 149, WAV)
+#define HISS CINDER_RESOURCE( ./resources/, Hiss.wav, 150, WAV)
+#define HYBRID_GROWL CINDER_RESOURCE( ./resources/, HybridGrowl.wav, 151, WAV)
+#define HYBRID_GROWL_2 CINDER_RESOURCE( ./resources/, HybridGrowl02.wav, 152, WAV)
 
 
 #endif

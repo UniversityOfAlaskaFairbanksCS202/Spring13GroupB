@@ -26,16 +26,28 @@ public:
 
 	//enum attacking {,,,}
 	//enum monster{,,,,,,}
-	Sound();
-	void setup();
-	void launch();
 
+	void attackSetup1();//initializes all the sound setups
+	void attackSetup2();
+	void attackSetup3();
+	void attackSetup4();
+	void magicAttackSetup();
+	void screechSetup();
+	void monsterScreechSetup();
+	void swallowSetup();
+	void snarlSetup();
+	void superSnarlSetup();
+	void doorNoiseSetup();
+	void dragonHissSetup();
+	void hissSetup();
+	void hybridGrowlSetup1();
+	void hybridGrowlSetup2();
+
+	void launch();
 
 private:
 	audio::SourceRef currentSound_;
 
 };
-
-
 
 #endif
