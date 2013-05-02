@@ -11,6 +11,7 @@
 #include "cinder/gl/gl.h"
 #include "dungeon.h"
 #include "ui.h"
+#include "Sound.h"
 
 using namespace ci;
 using namespace ci::app;

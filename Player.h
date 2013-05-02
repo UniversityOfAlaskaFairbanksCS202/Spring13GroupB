@@ -19,7 +19,7 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-
+#include "Sound.h"
 #include "Monster.h"
 
 class Player: public Character
