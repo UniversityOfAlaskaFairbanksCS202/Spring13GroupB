@@ -1,12 +1,10 @@
 // dungeon.h
 // ross spicer
-// 2013/04/11
+// 2013/05/1
 //
-// ver 1: contains the declerations of stuff that will likely be needed 
-// for the dungeon class
+// the dungeon class draws the dungeon and keeps triack is the 
+// room has a monster or not
 //
-// ver 2: got rid of the room class and intergrated it into the Dungeon 
-// class
 #ifndef DUNGEON_HEADER_FILE
 #define DUNGEON_HEADER_FILE
 
@@ -28,18 +26,32 @@ using namespace ci;
 
 class Dungeon{
 	public:
-		enum moveDir{FOWARD,BACK,LEFT,RIGHT,BOSS};
 		
-		Dungeon();// construct stuff
+		//Dungeon::Dungeon()
+		//  ctor that makes an empty room for the direction to be displayed
+		Dungeon();
 		
-		bool 	ChangeRoom(char	dir ,int lvl);// change the currRoom
-									  // and currMonster
+		// void	Dungeon::ChangeRoom(char	dir = 'n' ,int lvl)
+		// 		this funcion cahnges the room to a random type of room
+		//			with a random chance of monster
+		//
+		// pramaters:
+		//			dir -- the room direction that is requested 
+		//			lvl -- the players level
+		bool 	ChangeRoom(char	dir ,int lvl);
+
+		// killMonster()
+		//	kill the monster
 		void	killMonster()
 				{_monsterAlive = false;}
 
+		// occupied()
+		//	is the room occupied
 		bool	occupied()
 				{return _monsterAlive;}
 		
+		// Monster& getMonster()
+		// get the current monster as a monster reference
 		Monster& getMonster()
 				{
 				return *_currMonster;		
@@ -48,19 +60,23 @@ class Dungeon{
 		// void	Dungeon::draw() 
 		// 		the draw functon for the dungeon 
 		void 	draw(); 
-		void 	update();
-		
 
+		
+		// destructor
 		~Dungeon(); 
 	
 
 	private:
+		// doors
 		bool		_doorF;
 		bool		_doorL;
 		bool		_doorR;
 
+		// images
 		gl::Texture _DungeonBG;
 		gl::Texture _DungeonMonster;
+
+		// monster
 		Monster * _currMonster;
 		bool	_monsterAlive; 
 };

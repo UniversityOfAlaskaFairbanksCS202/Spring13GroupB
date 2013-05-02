@@ -1,3 +1,10 @@
+// dungeon.cpp
+// ross spicer
+// 2013/05/1
+//
+// the dungeon class draws the dungeon and keeps triack is the 
+// room has a monster or not
+//
 #include "dungeon.h"
 #include "cinder/Rand.h"
 #include "cinder/ImageIo.h"
@@ -13,28 +20,36 @@ using namespace std;
 
 
 
-
+//Dungeon::Dungeon()
+//  ctor that makes an empty room for the direction to be displayed
 Dungeon::Dungeon()
 {
+	// foward door
 	_doorF = true;
 	_doorL = false;
 	_doorR = false;
 
+	
 	_DungeonBG = gl::Texture( loadImage(
 						loadResource(  ROOM_F__ ) ) );
-
+	// load a moster image just cause it might need an inital value
+	_DungeonMonster = gl::Texture( loadImage(
+						loadResource(  MONS___1 ) ) );
+	//no monster
 	_monsterAlive = false;
-	
-}
+	_currMonster = NULL;
+}//Dungeon::Dungeon()
 
 
 
-// void	Dungeon::ChangeRoom(char	dir = 'n' )
+// void	Dungeon::ChangeRoom(char	dir = 'n' ,int lvl)
 // 		this funcion cahnges the room to a random type of room
+//			with a random chance of monster
 //
 // pramaters:
 //			dir -- the room direction that is requested 
-bool	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
+//			lvl -- the players level
+bool	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )
 {
 
 	// test to see if the door is avaible 
@@ -58,15 +73,18 @@ bool	Dungeon::ChangeRoom(char	dir = 'n',int lvl = 1 )// need to add palyer level
 	killMonster();
 
 	// delete old monster
-	if (!_currMonster){
-		delete _currMonster;
+	if (!_currMonster)
+		{
+			delete _currMonster;
 		}
-
+	
+	// is there amonster
 	if(Rand::randBool())
 		{
-		_currMonster = new Monster(lvl); 
-		_DungeonMonster = _currMonster->getImage();
-		_monsterAlive = true;
+			// make a monster up to players level
+			_currMonster = new Monster(lvl - Rand::randInt(lvl-1)); 
+			_DungeonMonster = _currMonster->getImage();
+			_monsterAlive = true;
 		}	
 
 	// choose the proper room image
@@ -131,7 +149,9 @@ void	Dungeon::draw()
 Dungeon::~Dungeon()
 {
 	if (!_currMonster)
+		{
 			delete _currMonster;
+		}
 
 }
 
