@@ -112,16 +112,26 @@ bool Player::randomEncounter()//function for randomly generating an enemy encoun
     return enemyEncountered;
 }
 
-void Player::levelingSystem()//the leveling system for the character
+//void Player::levelingSystem()
+//	the leveling system for the character
+//  update 1 -- updated the the attack, defense , 
+//		and hitpoits to grow each level -- ross
+//	update 2 -- added final level -- ross
+//	update 3 -- max HP now chahes to -- ross
+//	update 4 -- mana levels now
+void Player::levelingSystem()
 {
     ostringstream oss;
     
-    if(_experience == 100)
+    if(_experience >= 100 && _level == 1)
     {
         _level ++;
-        _hitPoints += 10;
-        _attack += 3;
-        _defense += 3;
+        _maxHitPoints += 10 +Rand::randInt (1, 11);
+		_hitPoints = _maxHitPoints;
+        _attack += 3 + Rand::randInt (1, 11);
+        _defense += 3 + Rand::randInt (1, 11);
+		_maxMana += 5 + Rand::randInt (1, 11);
+		_mana = _maxMana;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");//add after each
@@ -131,12 +141,15 @@ void Player::levelingSystem()//the leveling system for the character
         
     }
     
-    if(_experience == 275)
+    if(_experience >= 275 && _level == 2)
     {
         _level ++;
-        _hitPoints += 10 + Rand::randInt (1, 11);
-        _attack += 10 + Rand::randInt (1, 11);
-        _defense += 10 + Rand::randInt (1, 11);
+        _maxHitPoints += 10 +Rand::randInt (1, 11);
+		_hitPoints = _maxHitPoints;
+        _attack += 5 + Rand::randInt (1, 11);
+        _defense += 5 + Rand::randInt (1, 11);
+		_maxMana += 5 + Rand::randInt (1, 11);
+		_mana = _maxMana;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");
@@ -145,12 +158,15 @@ void Player::levelingSystem()//the leveling system for the character
         oss.str("");
         
     }
-    if(_experience == 475)
+    if(_experience >= 470 && _level == 3)
     {
         _level ++;
-        _hitPoints += 10 + Rand::randInt (1, 11);
-        _attack += 10 + Rand::randInt (1, 11);
-        _defense += 10 + Rand::randInt (1, 11);
+        _maxHitPoints += 10 +Rand::randInt (1, 11);
+		_hitPoints = _maxHitPoints;
+        _attack +=  8 + Rand::randInt (1, 11);
+        _defense += 8 + Rand::randInt (1, 11);
+		_maxMana += 5 + Rand::randInt (1, 11);
+		_mana = _maxMana;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");
@@ -158,13 +174,15 @@ void Player::levelingSystem()//the leveling system for the character
         _msg->newMessage(oss.str());
         oss.str("");
     }
-    if(_experience == 600)
+    if(_experience >= 680 && _level == 4)
     {
         _level ++;
-        _hitPoints += 10 + Rand::randInt (1, 11);
-        _attack += 10 + Rand::randInt (1, 11);
-        _defense += 10 + Rand::randInt (1, 11);
-        oss << "You are now level " << _level << ".";
+        _maxHitPoints += 10 +Rand::randInt (1, 11);
+		_hitPoints = _maxHitPoints;
+        _attack += 13 + Rand::randInt (1, 11);
+        _defense += 13 + Rand::randInt (1, 11);
+		_maxMana += 5 + Rand::randInt (1, 11);
+		_mana = _maxMana;
         oss << "You are now level " << _level << ".";
         _msg->newMessage(oss.str());
         oss.str("");
@@ -173,13 +191,29 @@ void Player::levelingSystem()//the leveling system for the character
         oss.str("");
         
     }
+	// this level means you won
+	if (_experience >= 1000 && _level == 5)
+	{
+		_level ++;
+		oss << "You are now level " << _level << "You Win.";
+		_msg->newMessage(oss.str());
+        oss.str("");
+	}
 }
 
-void Player::enemyDrop (Monster monster)//function for generating what items an enemy drops when killed
+// void Player::enemyDrop (Monster & monster)
+// function for generating what items an enemy drops when killed
+//     update 1 -- change param from monster to monster reference - ross
+//	   update 2 -- based exp gaind on monster lvl -ross
+void Player::enemyDrop (Monster & monster)
 {
     ostringstream oss;
-    _experience += 10;//change later
-    oss << "You got 10 experience points.";
+	int tempExp = 10 + Rand::randInt (1, monster.getLevel()*10+1);
+	_experience += tempExp;
+    oss << "You got " << tempExp << " experience points.";
+    _msg->newMessage(oss.str());
+    oss.str("");
+	oss << "You have " << _experience << " experience points.";
     _msg->newMessage(oss.str());
     oss.str("");
     levelingSystem();
@@ -233,6 +267,9 @@ void Player::enemyDrop (Monster monster)//function for generating what items an 
     
 }
 
+
+// canidate for deletion i don't think we use this 
+// and it isn't even set up to work with messenger -- ross
 void Player::treasureChest()//randomly generates chests for the player to find
 {
     //cout << "Called the treasure chest function" << endl;

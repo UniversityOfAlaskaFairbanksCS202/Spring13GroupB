@@ -18,7 +18,7 @@ Monster::Monster(int level)
     _hitPoints = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _maxHitPoints = _hitPoints;
     _defense = level*10 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
-    _weaponDamage = 3 + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
+    _weaponDamage = 3*level*level + Rand::randInt(MIN_VARIATION, MAX_VARIATION);
     _level = level;
 	type();
 }

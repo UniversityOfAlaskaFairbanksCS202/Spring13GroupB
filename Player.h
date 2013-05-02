@@ -37,7 +37,7 @@ public:
     fightVictor turn(Monster &monster, attackOption choice);
     bool randomEncounter();
     void levelingSystem();
-    void enemyDrop (Monster monster);
+    void enemyDrop (Monster & monster);
     void treasureChest();
     void movementDescription();
     void magicAttack();
