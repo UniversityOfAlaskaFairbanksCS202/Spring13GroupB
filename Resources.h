@@ -4,6 +4,8 @@
 
 //#define RES_MY_RES			CINDER_RESOURCE( ../resources/, image_name.png, 128, IMAGE )
 
+#define RES_BOOYAH		CINDER_RESOURCE( ../resources/, booyah.mp3, 128, MP3 )
+#define RES_BOOYAHWAV	CINDER_RESOURCE( ../resources/, booyah.wav, 129, WAV )
 
 #define ROOM_FLR  CINDER_RESOURCE( ./resources/, room_flr.png, 128, IMAGE )
 #define ROOM_FL_  CINDER_RESOURCE( ./resources/, room_fl_.png, 129, IMAGE )
