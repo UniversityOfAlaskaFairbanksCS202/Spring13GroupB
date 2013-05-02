@@ -1,3 +1,8 @@
+// cs_202ProjectApp.cpp
+//	this dungeon game was created by Ross Spicer, John Cheshire 
+// Andrew Clark, Chay Davis, and Jesse Arbuckle
+
+// this file contais the class that cinder uses to create the app
 #include "Messenger.h"
 #include "UIMessenger.h"
 #include "ImportantMessage.h"
